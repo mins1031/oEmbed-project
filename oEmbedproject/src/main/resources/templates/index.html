@@ -1,0 +1,107 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.1.js"></script>
+
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}"/>
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="search-text">
+      <div class="container">
+        <div class="row text-center">
+          <div class="form">
+            <form id="search-form" class="form-search form-horizontal">
+              <input type="text" class="search-url" name="searchUrl" placeholder="Search" style="width: 500px; height: 45px">
+              <button type="submit" class="btn-search">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr size="5px" style="border:solid 3px #0b0b0b">
+
+      <div class="container">
+        <div class="row text-center">
+
+          <table class="table table-bordered ">
+            <thead>
+            <tr>
+              <th>Key</th>
+              <th>Value</th>
+            </tr>
+            </thead>
+            <tbody class="input-data">
+
+            </tbody>
+          </table><br/>
+
+
+          <p class="testP"></p>
+        </div>
+      </div>
+
+    <div class="copyright">
+      <div class="container">
+        <div class="row text-center">
+          <p>Copyright © 2019 All rights reserved</p>
+        </div>
+      </div>
+    </div>
+
+  <script>
+    $('.btn-search').on('click',function (e) {
+      e.preventDefault()
+
+      $('.input-data').empty()
+
+      var search_url = $('.search-url').val()
+
+      console.log(search_url)
+
+      $.ajax({
+        method: "get",
+        url: "/api/oembed",
+        data: {'url': search_url},
+        contentType : "application/json; charset=utf-8",
+        statusCode: {
+          200: function (response) {
+            console.log("oEmbed 데이터 추출 완료")
+
+            $.each(response,function (key, value) {
+              console.log("키: " + key + " 값: " +value)
+              var responseValues = '<tr> <td>' + key + '<td>' + value + '<tr>';
+              $('.input-data').append(responseValues);
+            })
+          },
+          400: function (response) {
+            var errorCode = response.responseJSON.value;
+            console.log("400...")
+
+            if (errorCode == 470) {
+              alert("잘못된 url을 입력하였습니다.")
+              console.log(errorCode)
+            }
+            if (errorCode == 480) {
+              alert("oEmbed데이터를 제공하는 도메인이 아니거나 url이 잘못되었습니다.")
+              console.log(errorCode)
+            }
+            if (errorCode == 490) {
+              alert("리소스 url이 잘못되었습니다.")
+              console.log(errorCode)
+            }
+          }
+        }
+      });
+    });
+
+  </script>
+  </body>
+</html>
