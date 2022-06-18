@@ -1,15 +1,18 @@
-package com.min.oEmbedproject.service;
+package com.min.oEmbedproject.v2.oembeded.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.min.oEmbedproject.common.DomainInfo;
 import com.min.oEmbedproject.common.UrlParser;
-import com.min.oEmbedproject.dto.*;
+import com.min.oEmbedproject.dto.CollectInstagramDto;
+import com.min.oEmbedproject.dto.CollectTwitterDto;
+import com.min.oEmbedproject.dto.CollectVimeoDto;
+import com.min.oEmbedproject.dto.CollectYoutubeDto;
 import com.min.oEmbedproject.exception.NotCollectDataException;
 import com.min.oEmbedproject.exception.ParameterException;
+import com.min.oEmbedproject.v2.oembeded.dto.response.PlatformResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +27,11 @@ public class OembedService {
 
     private final ObjectMapper objectMapper;
     private final DomainInfo domainInfo;
+
+
+    public PlatformResponse beProvidedOEmbededData() {
+        return null;
+    }
 
     //youtube 플랫폼의 oEmbed 서비스에서 원하는 url의 데이터를 받아오는 메서드
     public CollectYoutubeDto extractYouTubeData(String searchUrl, String hostValue) throws Exception {

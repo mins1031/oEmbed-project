@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
 @Import(RestDocsConfiguration.class)
-class OembedApiControllerTest {
+class OembedControllerTest {
 
     @Autowired
     MockMvc mockMvc;

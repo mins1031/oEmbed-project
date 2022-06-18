@@ -6,6 +6,7 @@ import com.min.oEmbedproject.exception.NotRegisterDomainException;
 import com.min.oEmbedproject.exception.ParameterException;
 import com.min.oEmbedproject.service.OembedService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,8 @@ import javax.validation.constraints.NotNull;
 import java.net.URL;
 
 @RestController
-@AllArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 @RequestMapping("/api/oembed")
 public class OembedApiController {
 
@@ -36,7 +37,7 @@ public class OembedApiController {
 
         log.info("url search");
 
-        String requestUrl = searchUrl/*.getSearchUrl()*/;
+        String requestUrl = searchUrl;
         String hostValue = null;
 
         URL hostUrl = new URL(requestUrl);
