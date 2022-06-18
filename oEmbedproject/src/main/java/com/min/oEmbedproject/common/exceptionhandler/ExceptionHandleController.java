@@ -22,35 +22,43 @@ import java.net.MalformedURLException;
 public class ExceptionHandleController {
 
     @ExceptionHandler(ParameterException.class)
-    public ResponseEntity handleParamaterException(){
+    public ResponseEntity handleParamaterException() {
         log.info("ParamaterException");
         ExceptionResponse resultResponse = ExceptionResponse.of(ExceptionStatusCode.WRONG_PARAMETER);
 
-        return new ResponseEntity(resultResponse,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(resultResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(NotRegisterDomainException.class)
-    public ResponseEntity handleNotRegisterDomainException(NotRegisterDomainException e){
-        log.info("message= "+e.getMessage());
+    public ResponseEntity handleNotRegisterDomainException(NotRegisterDomainException e) {
+        log.info("message= " + e.getMessage());
         ExceptionResponse resultResponse = ExceptionResponse.of(ExceptionStatusCode.WRONG_DOMAIN);
 
-        return new ResponseEntity(resultResponse,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(resultResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(NotCollectDataException.class)
-    public ResponseEntity handleNotCollectDataException(){
+    public ResponseEntity handleNotCollectDataException() {
         log.info("NotCollectDataException");
         ExceptionResponse resultResponse = ExceptionResponse.of(ExceptionStatusCode.WRONG_URL);
 
-        return new ResponseEntity(resultResponse,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(resultResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(IOException.class)
-    public ResponseEntity handleIOException(){
+    public ResponseEntity handleIOException() {
         log.info("IOException");
         ExceptionResponse resultResponse = ExceptionResponse.of(ExceptionStatusCode.WRONG_URL);
 
-        return new ResponseEntity(resultResponse,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(resultResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity handleException() {
+        log.info("Exception");
+        ExceptionResponse resultResponse = ExceptionResponse.of(ExceptionStatusCode.WRONG_URL);
+
+        return new ResponseEntity(resultResponse, HttpStatus.BAD_REQUEST);
     }
 
 }

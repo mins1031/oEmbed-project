@@ -1,7 +1,7 @@
 package com.min.oEmbedproject.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.min.oEmbedproject.service.OembedService;
+import com.min.oEmbedproject.service.OembedService2;
 import com.min.oEmbedproject.testconfig.RestDocsConfiguration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,7 +41,7 @@ class OembedControllerTest {
     ObjectMapper objectMapper;
 
     @Autowired
-    OembedService oembedService;
+    OembedService2 oembedService2;
 
     @Test
     @DisplayName("컨트롤러 youtube테스트")

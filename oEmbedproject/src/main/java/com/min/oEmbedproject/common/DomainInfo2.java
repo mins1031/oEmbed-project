@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @NoArgsConstructor
 @Component
-public class DomainInfo {
+public class DomainInfo2 {
 
     private final String checkYoutube = "www.youtube.com";
     private final String checkInstagram = "www.instagram.com";
