@@ -1,31 +1,25 @@
 package com.min.oEmbedproject.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.min.oEmbedproject.dto.*;
 import com.min.oEmbedproject.exception.NotCollectDataException;
 import com.min.oEmbedproject.exception.ParameterException;
-import org.assertj.core.api.Assertions;
-import org.json.simple.JSONObject;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.Extensions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.io.IOException;
 import java.net.URL;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class OembedServiceTest {
+public class OembedService2Test {
 
     @Autowired
-    OembedService oembedService;
+    OembedService2 oembedService2;
 
     @Test
     @DisplayName("youtube url받고 알맞는 oEmbed값을 받아와 DTO변환")
@@ -37,7 +31,7 @@ public class OembedServiceTest {
         String hostValue = hostUrl.getHost();
 
         //When
-        CollectYoutubeDto collectYoutubeDto = oembedService.extractYouTubeData(youtubeUrl,hostValue);
+        CollectYoutubeDto collectYoutubeDto = oembedService2.extractYouTubeData(youtubeUrl,hostValue);
 
         System.out.println("dto= " +collectYoutubeDto);
 
@@ -55,7 +49,7 @@ public class OembedServiceTest {
         String hostValue = hostUrl.getHost();
 
         //When
-        CollectInstagramDto collectInstagramDto = oembedService.extractInstagramData(instaUrl,hostValue);
+        CollectInstagramDto collectInstagramDto = oembedService2.extractInstagramData(instaUrl,hostValue);
 
         System.out.println("dto= " +collectInstagramDto);
 
@@ -73,7 +67,7 @@ public class OembedServiceTest {
         String hostValue = hostUrl.getHost();
 
         //When
-        CollectTwitterDto collectTwitterDto = oembedService.extractTwitterData(twitterUrl,hostValue);
+        CollectTwitterDto collectTwitterDto = oembedService2.extractTwitterData(twitterUrl,hostValue);
 
         System.out.println("dto= " +collectTwitterDto);
 
@@ -91,7 +85,7 @@ public class OembedServiceTest {
         String hostValue = hostUrl.getHost();
 
         //When
-        CollectVimeoDto collectVimeoDto = oembedService.extractVimeoData(vimeoUrl,hostValue);
+        CollectVimeoDto collectVimeoDto = oembedService2.extractVimeoData(vimeoUrl,hostValue);
 
         System.out.println("dto= " +collectVimeoDto);
 
@@ -110,7 +104,7 @@ public class OembedServiceTest {
 
         //When & Then
         assertThrows(NotCollectDataException.class,
-                () -> oembedService.extractVimeoData(vimeoUrl,hostValue));
+                () -> oembedService2.extractVimeoData(vimeoUrl,hostValue));
 
     }
 
@@ -125,11 +119,11 @@ public class OembedServiceTest {
 
         //When & Then
         assertThrows(ParameterException.class,
-                () -> oembedService.extractVimeoData(null,hostValue));
+                () -> oembedService2.extractVimeoData(null,hostValue));
         assertThrows(ParameterException.class,
-                () -> oembedService.extractVimeoData(vimeoUrl,null));
+                () -> oembedService2.extractVimeoData(vimeoUrl,null));
         assertThrows(ParameterException.class,
-                () -> oembedService.extractVimeoData(null,null));
+                () -> oembedService2.extractVimeoData(null,null));
 
     }
 

@@ -1,7 +1,7 @@
 package com.min.oEmbedproject.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.min.oEmbedproject.common.DomainInfo;
+import com.min.oEmbedproject.common.DomainInfo2;
 import com.min.oEmbedproject.common.UrlParser;
 import com.min.oEmbedproject.dto.*;
 import com.min.oEmbedproject.exception.NotCollectDataException;
@@ -20,10 +20,10 @@ import java.net.URL;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class OembedService {
+public class OembedService2 {
 
     private final ObjectMapper objectMapper;
-    private final DomainInfo domainInfo;
+    private final DomainInfo2 domainInfo2;
 
     //youtube 플랫폼의 oEmbed 서비스에서 원하는 url의 데이터를 받아오는 메서드
     public CollectYoutubeDto extractYouTubeData(String searchUrl, String hostValue) throws Exception {
@@ -33,8 +33,7 @@ public class OembedService {
 
         String youtubeData = collectOembedData(searchUrl, hostValue);
 
-        CollectYoutubeDto resultYoutubeDto =
-                objectMapper.readValue(youtubeData, CollectYoutubeDto.class);
+        CollectYoutubeDto resultYoutubeDto = objectMapper.readValue(youtubeData, CollectYoutubeDto.class);
 
         return resultYoutubeDto;
     }
@@ -110,13 +109,13 @@ public class OembedService {
     public String distinguishUrlHost(String hostInfo, String searchUrl) {
         String completeUrl = null;
 
-        if (hostInfo.equals(domainInfo.getCheckYoutube()))
+        if (hostInfo.equals(domainInfo2.getCheckYoutube()))
             completeUrl = UrlParser.MadeYoutubeOembedUrl(searchUrl).toString();
-        else if (hostInfo.equals(domainInfo.getCheckInstagram()))
+        else if (hostInfo.equals(domainInfo2.getCheckInstagram()))
             completeUrl = UrlParser.MadeInstagramOembedUrl(searchUrl).toString();
-        else if (hostInfo.equals(domainInfo.getCheckTwitter()))
+        else if (hostInfo.equals(domainInfo2.getCheckTwitter()))
             completeUrl = UrlParser.MadeTwitterOembedUrl(searchUrl).toString();
-        else if (hostInfo.equals(domainInfo.getCheckVimeo()))
+        else if (hostInfo.equals(domainInfo2.getCheckVimeo()))
             completeUrl = UrlParser.MadeVimeoOembedUrl(searchUrl).toString();
         return completeUrl;
     }

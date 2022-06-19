@@ -2,16 +2,16 @@ package com.min.oEmbedproject.common;
 
 public class UrlParser {
 
-    private final static String instagramOembedUrl = new String("https://api.instagram.com/oembed?url=");
-    private final static String youtubeOembedUrl = new String("https://www.youtube.com/oembed?url=");
-    private final static String twitterOembedUrl = new String("https://publish.twitter.com/oembed?url=");
-    private final static String vimeoOembedUrl = new String("https://vimeo.com/api/oembed.json?url=");
-    private final static String contentFormat = "&format=json";
+    public final static String instagramOembedUrl = new String("https://api.instagram.com/oembed?url=");
+    public final static String YOUTUBE_OEMBED_URL = new String("https://www.youtube.com/oembed?url=");
+    public final static String twitterOembedUrl = new String("https://publish.twitter.com/oembed?url=");
+    public final static String vimeoOembedUrl = new String("https://vimeo.com/api/oembed.json?url=");
+    public final static String CONTENT_FORMAT = "&format=json";
 
     public static StringBuffer MadeYoutubeOembedUrl(String searchUrl){
         StringBuffer completeYoutubeOembedUrl = new StringBuffer();
-        completeYoutubeOembedUrl.insert(0,youtubeOembedUrl)
-                .append(searchUrl).append(contentFormat);
+        completeYoutubeOembedUrl.insert(0, YOUTUBE_OEMBED_URL)
+                .append(searchUrl).append(CONTENT_FORMAT);
 
         System.out.println("url= "+ completeYoutubeOembedUrl);
 
@@ -21,7 +21,7 @@ public class UrlParser {
     public static StringBuffer MadeInstagramOembedUrl(String searchUrl){
         StringBuffer completeInstagramOembedUrl = new StringBuffer();
         completeInstagramOembedUrl.insert(0,instagramOembedUrl)
-                .append(searchUrl).append(contentFormat);
+                .append(searchUrl).append(CONTENT_FORMAT);
 
         System.out.println("insta url=" +completeInstagramOembedUrl);
         System.out.println("insta url=" + instagramOembedUrl);
@@ -32,7 +32,7 @@ public class UrlParser {
     public static StringBuffer MadeTwitterOembedUrl(String searchUrl){
         StringBuffer completeTwitterOembedUrl = new StringBuffer();
         completeTwitterOembedUrl.insert(0,twitterOembedUrl)
-                .append(searchUrl).append(contentFormat);
+                .append(searchUrl).append(CONTENT_FORMAT);
 
         System.out.println("twitter url=" + completeTwitterOembedUrl);
         System.out.println("twitter url=" + twitterOembedUrl);
