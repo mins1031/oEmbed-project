@@ -19,6 +19,7 @@ public class YoutubePlatform implements Platform {
         return new PlatformResponse<YoutubeOembededResponse>(youtubeOembededResponse);
     }
 
+    @Override
     public String makeOembedUrl(String searchUrl){
         StringBuffer completeYoutubeOembedUrl = new StringBuffer();
         completeYoutubeOembedUrl.insert(0, UrlParser.YOUTUBE_OEMBED_URL).append(searchUrl).append(UrlParser.CONTENT_FORMAT);

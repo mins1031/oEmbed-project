@@ -2,7 +2,7 @@ package com.min.oEmbedproject.common;
 
 public class UrlParser {
 
-    public final static String instagramOembedUrl = new String("https://api.instagram.com/oembed?url=");
+    public final static String instagramOembedUrl = new String("https://instagram_oembed?url=");
     public final static String YOUTUBE_OEMBED_URL = new String("https://www.youtube.com/oembed?url=");
     public final static String twitterOembedUrl = new String("https://publish.twitter.com/oembed?url=");
     public final static String vimeoOembedUrl = new String("https://vimeo.com/api/oembed.json?url=");
@@ -21,7 +21,7 @@ public class UrlParser {
     public static StringBuffer MadeInstagramOembedUrl(String searchUrl){
         StringBuffer completeInstagramOembedUrl = new StringBuffer();
         completeInstagramOembedUrl.insert(0,instagramOembedUrl)
-                .append(searchUrl).append(CONTENT_FORMAT);
+                .append(searchUrl)/*.append(CONTENT_FORMAT)*/;
 
         System.out.println("insta url=" +completeInstagramOembedUrl);
         System.out.println("insta url=" + instagramOembedUrl);

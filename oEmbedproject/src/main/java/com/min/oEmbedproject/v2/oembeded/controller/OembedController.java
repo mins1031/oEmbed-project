@@ -15,7 +15,7 @@ public class OembedController {
 
     private final OembedService oembedService;
 
-    @GetMapping("/api/oembed")
+    @GetMapping("/v2/api/oembed")
     public ResponseEntity getOembedData(@RequestParam("url") String searchUrl) throws Exception {
 
         oembedService.beProvidedOembededData(searchUrl);

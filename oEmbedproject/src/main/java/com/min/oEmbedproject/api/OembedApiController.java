@@ -15,7 +15,7 @@ import java.net.URL;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/api/oembed2")
+@RequestMapping("/api/oembed")
 public class OembedApiController {
 
     private final OembedService2 oembedService2;

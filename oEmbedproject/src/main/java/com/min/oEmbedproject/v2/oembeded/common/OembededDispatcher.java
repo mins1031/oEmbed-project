@@ -14,7 +14,6 @@ public class OembededDispatcher {
     public static String collectOembedData(String completeOembedUrl) {
 
         BufferedReader in = null;
-        String resultData = null;
 
         try {
             URL resultUrl = new URL(completeOembedUrl);
@@ -23,6 +22,7 @@ public class OembededDispatcher {
 
             in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
 
+            String resultData = null;
             String line;
 
             while ((line = in.readLine()) != null) {

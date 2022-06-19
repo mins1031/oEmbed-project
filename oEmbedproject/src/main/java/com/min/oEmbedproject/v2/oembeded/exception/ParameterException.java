@@ -1,4 +1,4 @@
-package com.min.oEmbedproject.exception;
+package com.min.oEmbedproject.v2.oembeded.exception;
 
 import lombok.extern.slf4j.Slf4j;
 
