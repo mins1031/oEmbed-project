@@ -16,9 +16,8 @@ public class OembedController {
 
     private final OembedService oembedService;
 
-    @GetMapping("/api/oembed")
+    @GetMapping(OembedControllerPath.OEMBEDED_FIND_PATH)
     public ResponseEntity<PlatformResponse> getOembedData(@RequestParam("url") String searchUrl) throws Exception {
-
         PlatformResponse platformResponse = oembedService.beProvidedOembededData(searchUrl);
         return ResponseEntity.ok().body(platformResponse);
     }
